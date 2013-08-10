@@ -1,6 +1,7 @@
 package com.salomaa.greminder.activities;
 
 import com.salomaa.greminder.R;
+import com.salomaa.greminder.adapters.NavDrawerListAdapter;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -34,8 +35,7 @@ public class MainActivity extends ActionBarActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		// Set the adapter for the list view
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.nav_drawer_layout, mNavItems));
+		mDrawerList.setAdapter(new NavDrawerListAdapter(mNavItems));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new NavMenuItemClickListener());
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
