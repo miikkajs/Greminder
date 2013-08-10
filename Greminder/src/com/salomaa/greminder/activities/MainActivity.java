@@ -1,21 +1,22 @@
 package com.salomaa.greminder.activities;
 
-import com.salomaa.greminder.R;
-import com.salomaa.greminder.adapters.NavDrawerListAdapter;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.WindowCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.salomaa.greminder.R;
+import com.salomaa.greminder.fragments.MapFragment;
+import com.salomaa.greminder.fragments.NewReminderFragment;
 
 /**
  * @author Miikkajs
@@ -35,7 +36,8 @@ public class MainActivity extends ActionBarActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		// Set the adapter for the list view
-		mDrawerList.setAdapter(new NavDrawerListAdapter(mNavItems));
+		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.nav_drawer_layout, mNavItems));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new NavMenuItemClickListener());
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,12 +67,23 @@ public class MainActivity extends ActionBarActivity {
 	 * @author Miikkajs
 	 * 
 	 */
-	private class NavMenuItemClickListener implements OnItemClickListener {
+	private class NavMenuItemClickListener implements
+			ListView.OnItemClickListener {
 
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
-
+			Fragment fragment = null;
+			if (mNavItems[arg2].equals(getString(R.string.new_reminder))) {
+				fragment = new NewReminderFragment();
+			} else if (mNavItems[arg2].equals(getString(R.string.map))) {
+				fragment = new MapFragment();
+			}
+			if (fragment != null) {
+				FragmentManager fragmentManager = getSupportFragmentManager();
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
+			}
 		}
 
 	}

@@ -3,6 +3,7 @@
 
     <string-array name="nav_menu_array">
         <item>@string/new_reminder</item>
+        <item>@string/map</item>
     </string-array>
 
 </resources>
