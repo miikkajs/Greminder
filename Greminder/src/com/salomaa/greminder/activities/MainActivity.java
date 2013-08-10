@@ -4,8 +4,12 @@ import com.salomaa.greminder.R;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.WindowCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -14,12 +18,13 @@ import android.widget.ListView;
 
 /**
  * @author Miikkajs
- *
+ * 
  */
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 	private String[] mNavItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,12 @@ public class MainActivity extends Activity {
 				R.layout.nav_drawer_layout, mNavItems));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new NavMenuItemClickListener());
-
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+				R.drawable.ic_launcher,
+				R.string.abc_action_bar_home_description,
+				R.string.abc_action_mode_done);
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
 	}
 
 	@Override
@@ -43,9 +53,17 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 	/**
 	 * @author Miikkajs
-	 *
+	 * 
 	 */
 	private class NavMenuItemClickListener implements OnItemClickListener {
 
