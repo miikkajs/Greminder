@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.salomaa.greminder.R;
-import com.salomaa.greminder.fragments.MapFragment;
+import com.salomaa.greminder.fragments.MyMapFragment;
 import com.salomaa.greminder.fragments.NewReminderFragment;
 
 /**
@@ -77,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
 			if (mNavItems[arg2].equals(getString(R.string.new_reminder))) {
 				fragment = new NewReminderFragment();
 			} else if (mNavItems[arg2].equals(getString(R.string.map))) {
-				fragment = new MapFragment();
+				fragment = new MyMapFragment();
 			}
 			if (fragment != null) {
 				FragmentManager fragmentManager = getSupportFragmentManager();
