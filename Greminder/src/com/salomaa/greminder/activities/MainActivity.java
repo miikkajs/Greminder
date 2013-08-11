@@ -23,6 +23,8 @@ import com.salomaa.greminder.fragments.NewReminderFragment;
  */
 public class MainActivity extends ActionBarActivity {
 	private String[] mNavItems;
+	private MyMapFragment mapFragment = new MyMapFragment();
+	private NewReminderFragment newReminderFragment = new NewReminderFragment();
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -72,16 +74,18 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
+			FragmentManager fragmentManager = getSupportFragmentManager();
 			Fragment fragment = null;
 			if (mNavItems[arg2].equals(getString(R.string.new_reminder))) {
-				fragment = new NewReminderFragment();
+				fragment = newReminderFragment;
 			} else if (mNavItems[arg2].equals(getString(R.string.map))) {
-				fragment = new MyMapFragment();
+				fragment = mapFragment;
 			}
 			if (fragment != null) {
-				FragmentManager fragmentManager = getSupportFragmentManager();
-				fragmentManager.beginTransaction()
-						.replace(R.id.content_frame, fragment).commit();
+				if (!fragment.isInLayout()) {
+					fragmentManager.beginTransaction()
+							.replace(R.id.content_frame, fragment).commit();
+				}
 			}
 		}
 
