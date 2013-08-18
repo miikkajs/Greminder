@@ -1,5 +1,6 @@
 package com.salomaa.greminder.activities;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -41,12 +42,13 @@ public class MainActivity extends ActionBarActivity {
 				R.layout.nav_drawer_layout, mNavItems));
 		// Set the list's click listener
 		mDrawerList.setOnItemClickListener(new NavMenuItemClickListener());
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_launcher,
-				R.string.abc_action_bar_home_description,
+				R.drawable.ic_drawer, R.string.abc_action_bar_home_description,
 				R.string.abc_action_mode_done);
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 	}
 
 	@Override
@@ -62,6 +64,18 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	/**
