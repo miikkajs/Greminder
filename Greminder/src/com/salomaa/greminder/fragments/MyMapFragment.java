@@ -11,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.salomaa.greminder.map.MapState;
 import com.salomaa.greminder.utils.FileManager;
 
@@ -33,6 +34,17 @@ public class MyMapFragment extends SupportMapFragment {
 		super.onResume();
 		mMapView = getMap();
 		mMapView.setMyLocationEnabled(true);
+		restoreMapState();
+	}
+
+	@Override
+	public void onDestroy() {
+		saveMapState();
+
+		super.onDestroy();
+	}
+
+	private void restoreMapState() {
 		MapState mapState = null;
 		try {
 			mapState = (MapState) FileManager.readFile(MAP_STATE_FILE_NAME);
@@ -42,15 +54,15 @@ public class MyMapFragment extends SupportMapFragment {
 			e.printStackTrace();
 		}
 		if (mapState != null) {
-			mMapView.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-					mapState.getLatitude(), mapState.getLongitude()), mapState
-					.getZoom()));
+			mMapView.animateCamera(CameraUpdateFactory.newLatLngZoom(
+					new LatLng(mapState.getLatitude(), mapState.getLongitude()),
+					mapState.getZoom()));
 		}
-
+		mMapView.addMarker(new MarkerOptions().title("Test").position(
+				new LatLng(60.173324, 24.941025)));
 	}
 
-	@Override
-	public void onDestroy() {
+	private void saveMapState() {
 		double latitude = mMapView.getCameraPosition().target.latitude;
 		double longitude = mMapView.getCameraPosition().target.longitude;
 		float zoom = mMapView.getCameraPosition().zoom;
@@ -63,10 +75,6 @@ public class MyMapFragment extends SupportMapFragment {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		super.onDestroy();
 	}
-
-	
-	
 
 }

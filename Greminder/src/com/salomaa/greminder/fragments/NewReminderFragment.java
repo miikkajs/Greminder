@@ -3,7 +3,11 @@
  */
 package com.salomaa.greminder.fragments;
 
+import java.util.HashMap;
+
 import com.salomaa.greminder.R;
+import com.salomaa.greminder.views.LayoutBuilder;
+import com.salomaa.greminder.views.NewReminderLayoutBuilder;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +29,8 @@ public class NewReminderFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.layout_newreminderfragment, container,false);
+		LayoutBuilder layoutBuilder = new NewReminderLayoutBuilder(getActivity());
+		return layoutBuilder.createLayout(new HashMap<String, Object>());
+//		return inflater.inflate(R.layout.layout_newreminderfragment, container,false);
 	}
 }

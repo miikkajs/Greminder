@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="new_reminder">Uusi muistutus</string>
-        <string name="map">Kartta</string>
+
+    <string name="new_reminder">Uusi muistutus</string>
+    <string name="map">Kartta</string>
+    <string name="details">Tarkemmat tiedot</string>
+
 </resources>

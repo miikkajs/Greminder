@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="new_reminder">New reminder</string>
     <string name="map">Map</string>
+    <string name="details">Details</string>
 
 </resources>

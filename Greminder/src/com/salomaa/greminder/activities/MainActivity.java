@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.salomaa.greminder.R;
+import com.salomaa.greminder.fragments.DetailFragment;
 import com.salomaa.greminder.fragments.MyMapFragment;
 import com.salomaa.greminder.fragments.NewReminderFragment;
 
@@ -26,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
 	private String[] mNavItems;
 	private MyMapFragment mapFragment = new MyMapFragment();
 	private NewReminderFragment newReminderFragment = new NewReminderFragment();
+	private DetailFragment detailFragment = new DetailFragment();
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -94,6 +96,8 @@ public class MainActivity extends ActionBarActivity {
 				fragment = newReminderFragment;
 			} else if (mNavItems[arg2].equals(getString(R.string.map))) {
 				fragment = mapFragment;
+			} else if (mNavItems[arg2].equals(getString(R.string.details))) {
+				fragment = detailFragment;
 			}
 			if (fragment != null) {
 				if (!fragment.isInLayout()) {
