@@ -3,6 +3,7 @@
  */
 package com.salomaa.greminder.providers;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,22 +12,16 @@ import java.util.Map;
  */
 public class PersistentMemoryDataProvider implements DataProvider {
 
-	/* (non-Javadoc)
-	 * @see com.salomaa.greminder.providers.DataProvider#sendData(java.util.Map)
-	 */
 	@Override
-	public void sendData(Map<String, Object> data) {
-		// TODO Auto-generated method stub
-
+	public void sendData(List<Map<String, Object>> data) {
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.salomaa.greminder.providers.DataProvider#getData()
-	 */
 	@Override
-	public Map<String, Object> getData() throws NullPointerException{
-		// TODO Auto-generated method stub
-		throw new NullPointerException();
+	public List<Map<String, Object>> getData() throws NullPointerException {
+		return null;
 	}
+
+
 
 }

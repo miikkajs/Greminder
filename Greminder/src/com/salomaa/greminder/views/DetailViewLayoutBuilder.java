@@ -4,11 +4,12 @@
 package com.salomaa.greminder.views;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import android.content.Context;
-import android.view.ViewGroup;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,20 +31,23 @@ public class DetailViewLayoutBuilder implements LayoutBuilder {
 	 * com.salomaa.greminder.views.LayoutBuilder#createLayout(java.util.Map)
 	 */
 	@Override
-	public ViewGroup createLayout(Map<String, Object> data) {
+	public View createLayout(List<Map<String, Object>> data) {
 		LinearLayout layout = new LinearLayout(mContext);
-		Set<String> keys = data.keySet();
-		Iterator<String> iterator = keys.iterator();
-		while (iterator.hasNext()) {
-			String caption = iterator.next();
-			TextView captionTextView = new TextView(mContext);
-			captionTextView.setText(caption);
+		layout.setOrientation(LinearLayout.VERTICAL);
+		for (Map<String, Object> map : data) {
+			Set<String> keys = map.keySet();
+			Iterator<String> iterator = keys.iterator();
+			while (iterator.hasNext()) {
+				String caption = iterator.next();
+				TextView captionTextView = new TextView(mContext);
+				captionTextView.setText(caption);
+				TextView detailTextView = new TextView(mContext);
+				detailTextView.setText(map.get(caption).toString());
+				layout.addView(detailTextView);
 
-			TextView detailTextView = new TextView(mContext);
-			detailTextView.setText(data.get(caption).toString());
-			layout.addView(detailTextView);
-
+			}
 		}
+
 		return layout;
 	}
 
