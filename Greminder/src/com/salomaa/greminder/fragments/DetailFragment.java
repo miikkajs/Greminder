@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.salomaa.greminder.providers.DataProvider;
 import com.salomaa.greminder.providers.PersistentMemoryDataProvider;
@@ -39,9 +40,13 @@ public class DetailFragment extends Fragment {
 		if (data != null) {
 
 		}
+		try{
 		View layout = layoutBuilder.createLayout(data);
-
-		return layout;
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		
+		return new LinearLayout(getActivity());
 	}
 
 	class GetDataAsyncTask extends AsyncTask<Void, Boolean, Boolean> {
