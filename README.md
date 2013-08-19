@@ -1,8 +1,8 @@
-Greminder
+Fix my Helsinki
 =========
-Repo created 10.08.2013
+Branch created from Greminder:
+19.08.2013
 
-The Greminder Android app source.
-
-Greminder is Geo-reminder or Geo-note app for Android.
-It's still under development and haven't been published.
+Fix my Helsinki data comes from City of Helsinki Issue reporting API.
+More info:
+http://dev.hel.fi/apis/issuereporting

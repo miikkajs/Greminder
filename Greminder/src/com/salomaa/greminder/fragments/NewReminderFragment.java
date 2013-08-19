@@ -5,15 +5,14 @@ package com.salomaa.greminder.fragments;
 
 import java.util.HashMap;
 
-import com.salomaa.greminder.R;
-import com.salomaa.greminder.views.LayoutBuilder;
-import com.salomaa.greminder.views.NewReminderLayoutBuilder;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.salomaa.greminder.views.LayoutBuilder;
+import com.salomaa.greminder.views.NewReminderLayoutBuilder;
 
 /**
  * @author Miikkajs

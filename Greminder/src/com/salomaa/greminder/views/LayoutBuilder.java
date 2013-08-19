@@ -5,12 +5,16 @@ package com.salomaa.greminder.views;
 
 import java.util.Map;
 
-import android.view.ViewGroup;
+import android.view.View;
 
 /**
  * @author Miikkajs
  *
  */
 public interface LayoutBuilder {
-public ViewGroup createLayout(Map<String,Object> data);
+/**
+ * @param data
+ * @return ViewGroup
+ */
+public View createLayout(Map<String,Object> data);
 }

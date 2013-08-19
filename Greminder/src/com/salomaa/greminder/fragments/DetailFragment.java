@@ -6,16 +6,16 @@ package com.salomaa.greminder.fragments;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.salomaa.greminder.providers.DataProvider;
-import com.salomaa.greminder.providers.PersistentMemoryDataProvider;
-import com.salomaa.greminder.views.DetailViewLayoutBuilder;
-import com.salomaa.greminder.views.LayoutBuilder;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.salomaa.greminder.providers.DataProvider;
+import com.salomaa.greminder.providers.PersistentMemoryDataProvider;
+import com.salomaa.greminder.views.DetailViewLayoutBuilder;
+import com.salomaa.greminder.views.LayoutBuilder;
 
 /**
  * @author Miikkajs

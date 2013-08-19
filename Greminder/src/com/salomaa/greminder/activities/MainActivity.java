@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.salomaa.greminder.R;
+import com.salomaa.fixmyhelsinki.R;
 import com.salomaa.greminder.fragments.DetailFragment;
 import com.salomaa.greminder.fragments.MyMapFragment;
 import com.salomaa.greminder.fragments.NewReminderFragment;
