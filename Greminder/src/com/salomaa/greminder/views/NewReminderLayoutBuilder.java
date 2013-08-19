@@ -3,6 +3,7 @@
  */
 package com.salomaa.greminder.views;
 
+import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
@@ -21,14 +22,8 @@ public class NewReminderLayoutBuilder implements LayoutBuilder {
 		this.mContext = context;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.salomaa.greminder.views.LayoutBuilder#createLayout(java.util.Map)
-	 */
 	@Override
-	public View createLayout(Map<String, Object> data) {
+	public View createLayout(List<Map<String, Object>> data) {
 		WebView webView = new WebView(mContext);
 		WebSettings webSettings = webView.getSettings();
 		webSettings.setJavaScriptEnabled(true);

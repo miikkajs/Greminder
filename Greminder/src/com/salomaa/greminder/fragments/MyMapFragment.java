@@ -58,8 +58,8 @@ public class MyMapFragment extends SupportMapFragment {
 					new LatLng(mapState.getLatitude(), mapState.getLongitude()),
 					mapState.getZoom()));
 		}
-		mMapView.addMarker(new MarkerOptions().title("Test").position(
-				new LatLng(60.173324, 24.941025)));
+//		mMapView.addMarker(new MarkerOptions().title("Test").position(
+//				new LatLng(60.173324, 24.941025)));
 	}
 
 	private void saveMapState() {

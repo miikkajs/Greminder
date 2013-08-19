@@ -3,6 +3,7 @@
  */
 package com.salomaa.greminder.views;
 
+import java.util.List;
 import java.util.Map;
 
 import android.view.View;
@@ -16,5 +17,5 @@ public interface LayoutBuilder {
  * @param data
  * @return ViewGroup
  */
-public View createLayout(Map<String,Object> data);
+public View createLayout(List<Map<String,Object>> data);
 }
